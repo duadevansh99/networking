@@ -72,6 +72,9 @@ public class DisplayActivity extends AppCompatActivity {
         task.execute(userID);
     }
 
+
+
+
     void getComments(){
         progressBar.setVisibility(View.VISIBLE);
 
@@ -88,8 +91,9 @@ public class DisplayActivity extends AppCompatActivity {
     }
 
     public  void goBack(View view){
-        Intent intent=new Intent(DisplayActivity.this,MainActivity.class);
-        intent.putExtra(RETURN_POST_ID,postID);
+        Intent intent=new Intent();
+        intent.putExtra(RETURN_POST_ID,userID);
         setResult(RESULT_CODE,intent);
+        finish();
     }
 }

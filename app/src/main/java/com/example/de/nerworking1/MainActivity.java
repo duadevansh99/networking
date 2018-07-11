@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         progressBar.setVisibility(View.GONE);
         listView.setVisibility(View.VISIBLE);
 
+        listView.setOnItemClickListener(this);
+
     }
 
     public void  fetchData(View view){
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         displayBundle.putString(SEND_BODY,body);
         displayBundle.putInt(SEND_USERID,userId);
         displayBundle.putInt(SEND_POSTID,postId);
+
         Intent displayIntent=new Intent(this,DisplayActivity.class);
         displayIntent.putExtras(displayBundle);
         startActivityForResult(displayIntent,DISPLAY_REQUEST_CODE);
@@ -97,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         postTitles.clear();
                         for(int i=0;i<100;i++){
                             Post p=posts.get(i);
-                            if(p.getPostId()==ID){
+                            if(p.getUserId()==ID){
                                 postTitles.add(p);
                             }
                         }

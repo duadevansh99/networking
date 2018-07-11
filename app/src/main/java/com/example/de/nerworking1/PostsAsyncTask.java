@@ -19,7 +19,6 @@ import javax.net.ssl.HttpsURLConnection;
 public class PostsAsyncTask extends AsyncTask<Void,Void,ArrayList<Post>>{
 
     PostsDownloadListener listener;
-    Post post=new Post();
     PostsAsyncTask(PostsDownloadListener listener) {
         this.listener=listener;
     }
@@ -47,6 +46,7 @@ public class PostsAsyncTask extends AsyncTask<Void,Void,ArrayList<Post>>{
 
             JSONArray rootArray=new JSONArray(result);
             for(int i=0; i<100;i++){
+                Post post=new Post();
                 JSONObject postObject=rootArray.getJSONObject(i);
                 String name=postObject.getString("title");
                 String body=postObject.getString("body");
